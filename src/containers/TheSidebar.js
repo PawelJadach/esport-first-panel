@@ -13,8 +13,6 @@ import {
   CSidebarNavItem,
 } from '@coreui/react'
 
-import CIcon from '@coreui/icons-react'
-
 // sidebar nav config
 import navigation from './_nav'
 
@@ -28,7 +26,7 @@ const TheSidebar = () => {
       onShowChange={(val) => dispatch(setSidebarShow({sidebarShow: val }))}
     >
       <CSidebarBrand className="d-md-flex d-none" to="/">
-        <img src='/esport_first.svg'/>
+        <img src='/esport_first.svg' alt='Esport first logo' />
       </CSidebarBrand>
       <CSidebarNav>
         <CCreateElement

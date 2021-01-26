@@ -4,7 +4,6 @@ import {
   CButton,
   CCard,
   CCardBody,
-  CCardGroup,
   CCol,
   CContainer,
   CForm,
@@ -31,7 +30,7 @@ const Login = () => {
             <CCard>
               <CCardBody>
                 <CForm>
-                  <img className={'mb-3'} src={'/esport_first_black_login.svg'} />
+                  <img className={'mb-3'} src='/esport_first_black_login.svg' alt='Esport first logo' />
                   <p className="text-muted">Zaloguj się do swojego konta</p>
                   <CInputGroup className="mb-3">
                     <CInputGroupPrepend>

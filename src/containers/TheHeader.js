@@ -1,13 +1,7 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { setSidebarShow } from '../features';
-import {
-  CHeader,
-  CToggler,
-  CHeaderBrand,
-  CHeaderNav,
-} from '@coreui/react'
-import CIcon from '@coreui/icons-react'
+import { CHeader, CToggler, CHeaderBrand, CHeaderNav } from '@coreui/react'
 
 // routes config
 import routes from '../routes'
@@ -41,7 +35,7 @@ const TheHeader = () => {
         onClick={toggleSidebar}
       />
       <CHeaderBrand className="mx-auto d-lg-none" to="/">
-        <img src='/esport_first_black.svg'/>
+        <img src='/esport_first_black.svg' alt='Esport first logo' />
       </CHeaderBrand>
       <CHeaderNav className="px-3 ml-auto">
         <TheHeaderDropdown/>
