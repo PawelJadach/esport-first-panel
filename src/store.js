@@ -1,4 +1,4 @@
-import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import { persistReducer, persistStore} from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import thunk from 'redux-thunk';
@@ -21,7 +21,7 @@ const persistConfig = {
 
 export const store = configureStore({
   reducer: persistReducer(persistConfig, rootReducer),
-  devTools: process.env.NODE_ENV !== "production",
+  devTools: process.env.NODE_ENV !== 'production',
   preloadedState: initialState,
   middleware: [thunk]
 });

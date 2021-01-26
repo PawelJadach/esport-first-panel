@@ -1,26 +1,26 @@
-import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { setSidebarShow } from '../features';
-import { CHeader, CToggler, CHeaderBrand, CHeaderNav } from '@coreui/react'
+import { CHeader, CToggler, CHeaderBrand, CHeaderNav } from '@coreui/react';
 
 // routes config
-import routes from '../routes'
+import routes from '../routes';
 
-import {TheHeaderDropdown}  from './index'
+import {TheHeaderDropdown}  from './index';
 
 const TheHeader = () => {
-  const dispatch = useDispatch()
-  const sidebarShow = useSelector(state => state.auth.sidebarShow)
+  const dispatch = useDispatch();
+  const sidebarShow = useSelector(state => state.auth.sidebarShow);
 
   const toggleSidebar = () => {
-    const val = [true, 'responsive'].includes(sidebarShow) ? false : 'responsive'
-    dispatch(setSidebarShow({sidebarShow: val}))
-  }
+    const val = [true, 'responsive'].includes(sidebarShow) ? false : 'responsive';
+    dispatch(setSidebarShow({sidebarShow: val}));
+  };
 
   const toggleSidebarMobile = () => {
-    const val = [false, 'responsive'].includes(sidebarShow) ? true : 'responsive'
-    dispatch(setSidebarShow({sidebarShow: val}))
-  }
+    const val = [false, 'responsive'].includes(sidebarShow) ? true : 'responsive';
+    dispatch(setSidebarShow({sidebarShow: val}));
+  };
 
   return (
     <CHeader>
@@ -41,7 +41,7 @@ const TheHeader = () => {
         <TheHeaderDropdown/>
       </CHeaderNav>
     </CHeader>
-  )
-}
+  );
+};
 
-export default TheHeader
+export default TheHeader;

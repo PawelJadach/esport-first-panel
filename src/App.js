@@ -1,14 +1,16 @@
 import React from 'react';
 import {HashRouter, Redirect, Route, Switch} from 'react-router-dom';
-import { useSelector } from 'react-redux'
+import { useSelector } from 'react-redux';
 
 import './scss/style.scss';
 
-const loading = (
-  <div className="pt-3 text-center">
-    <div className="sk-spinner sk-spinner-pulse"></div>
-  </div>
-)
+const loading = () => {
+  return (
+    <div className="pt-3 text-center">
+      <div className="sk-spinner sk-spinner-pulse"></div>
+    </div>
+  );
+};
 
 // Containers
 const TheLayout = React.lazy(() => import('./containers/TheLayout'));
@@ -34,13 +36,13 @@ const App = (props) => {
             ) : (
               <Switch>
                 <Route exact path="/login" name="Login Page" render={props => <Login {...props}/>}/>
-                <Redirect to={"/login"} />
+                <Redirect to={'/login'} />
               </Switch>
             )
           }
         </React.Suspense>
     </HashRouter>
   );
-}
+};
 
 export default App;

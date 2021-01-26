@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 import {
   TheContent,
   TheSidebar,
   TheFooter,
   TheHeader
-} from './index'
+} from './index';
 
 const TheLayout = () => {
 
@@ -19,7 +19,7 @@ const TheLayout = () => {
         <TheFooter/>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default TheLayout
+export default TheLayout;

@@ -1,11 +1,11 @@
-import React from 'react'
-import { CDropdown, CDropdownItem, CDropdownMenu, CDropdownToggle, CImg } from '@coreui/react'
-import CIcon from '@coreui/icons-react'
-import {useDispatch} from "react-redux";
-import {setUser} from "../features";
+import React from 'react';
+import { CDropdown, CDropdownItem, CDropdownMenu, CDropdownToggle, CImg } from '@coreui/react';
+import CIcon from '@coreui/icons-react';
+import {useDispatch} from 'react-redux';
+import {setUser} from '../features';
 
 const TheHeaderDropdown = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const handleLogout = () => {
     dispatch(setUser({ user: null }));
@@ -33,7 +33,7 @@ const TheHeaderDropdown = () => {
         </CDropdownItem>
       </CDropdownMenu>
     </CDropdown>
-  )
-}
+  );
+};
 
-export default TheHeaderDropdown
+export default TheHeaderDropdown;

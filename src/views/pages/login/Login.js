@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import {
   CButton,
@@ -12,12 +12,12 @@ import {
   CInputGroupPrepend,
   CInputGroupText,
   CRow
-} from '@coreui/react'
-import CIcon from '@coreui/icons-react'
-import {setUser} from "../../../features";
+} from '@coreui/react';
+import CIcon from '@coreui/icons-react';
+import {setUser} from '../../../features';
 
 const Login = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const handleLogin = () => {
     dispatch(setUser({ user: true }));
   };
@@ -30,7 +30,7 @@ const Login = () => {
             <CCard>
               <CCardBody>
                 <CForm>
-                  <img className={'mb-3'} src='/esport_first_black_login.svg' alt='Esport first logo' />
+                  <img className='mb-3' src='/esport_first_black_login.svg' alt='Esport first logo' />
                   <p className="text-muted">Zaloguj się do swojego konta</p>
                   <CInputGroup className="mb-3">
                     <CInputGroupPrepend>
@@ -60,7 +60,7 @@ const Login = () => {
         </CRow>
       </CContainer>
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;
