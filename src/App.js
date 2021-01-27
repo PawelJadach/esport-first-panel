@@ -1,16 +1,14 @@
 import React from 'react';
 import { HashRouter, Redirect, Route, Switch } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useCookies } from 'react-cookie';
 
 import './scss/style.scss';
 
-const loading = () => {
-  return (
-    <div className="pt-3 text-center">
-      <div className="sk-spinner sk-spinner-pulse"></div>
-    </div>
-  );
-};
+const Loading = (
+  <div className="pt-3 text-center">
+    <div className="sk-spinner sk-spinner-pulse"></div>
+  </div>
+);
 
 // Containers
 const TheLayout = React.lazy(() => import('./containers/TheLayout'));
@@ -21,12 +19,12 @@ const Page404 = React.lazy(() => import('./views/pages/page404/Page404'));
 const Page500 = React.lazy(() => import('./views/pages/page500/Page500'));
 
 const App = (props) => {
-  const user = useSelector((state) => state.auth.user);
-
+  const [cookies] = useCookies(['jwt']);
+  console.log(cookies.jwt);
   return (
     <HashRouter>
-      <React.Suspense fallback={loading}>
-        {user ? (
+      <React.Suspense fallback={Loading}>
+        {cookies.jwt ? (
           <Switch>
             <Route
               exact

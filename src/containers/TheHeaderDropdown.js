@@ -8,13 +8,13 @@ import {
 } from '@coreui/react';
 import CIcon from '@coreui/icons-react';
 import { useDispatch } from 'react-redux';
-import { setUser } from '../features';
+import axios from 'axios';
 
 const TheHeaderDropdown = () => {
-  const dispatch = useDispatch();
-
-  const handleLogout = () => {
-    dispatch(setUser({ user: null }));
+  const handleLogout = async () => {
+    await axios.get('http://localhost:3000/auth/logout', {
+      withCredentials: true,
+    });
   };
 
   return (

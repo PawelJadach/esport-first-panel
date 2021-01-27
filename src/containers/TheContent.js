@@ -5,7 +5,7 @@ import { CContainer, CFade } from '@coreui/react';
 // routes config
 import routes from '../routes';
 
-const loading = (
+const Loading = (
   <div className="pt-3 text-center">
     <div className="sk-spinner sk-spinner-pulse"></div>
   </div>
@@ -15,7 +15,7 @@ const TheContent = () => {
   return (
     <main className="c-main">
       <CContainer fluid>
-        <Suspense fallback={loading}>
+        <Suspense fallback={Loading}>
           <Switch>
             {routes.map((route, idx) => {
               return (

@@ -7,6 +7,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { CookiesProvider } from 'react-cookie';
 
 import { icons } from './assets/icons';
 
@@ -16,7 +17,9 @@ React.icons = icons;
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <CookiesProvider>
+      <App />
+    </CookiesProvider>
   </Provider>,
   document.getElementById('root')
 );
