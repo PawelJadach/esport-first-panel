@@ -1,8 +1,14 @@
 import React from 'react';
-import { CDropdown, CDropdownItem, CDropdownMenu, CDropdownToggle, CImg } from '@coreui/react';
+import {
+  CDropdown,
+  CDropdownItem,
+  CDropdownMenu,
+  CDropdownToggle,
+  CImg,
+} from '@coreui/react';
 import CIcon from '@coreui/icons-react';
-import {useDispatch} from 'react-redux';
-import {setUser} from '../features';
+import { useDispatch } from 'react-redux';
+import { setUser } from '../features';
 
 const TheHeaderDropdown = () => {
   const dispatch = useDispatch();
@@ -12,11 +18,7 @@ const TheHeaderDropdown = () => {
   };
 
   return (
-    <CDropdown
-      inNav
-      className="c-header-nav-items mx-2"
-      direction="down"
-    >
+    <CDropdown inNav className="c-header-nav-items mx-2" direction="down">
       <CDropdownToggle className="c-header-nav-link" caret={false}>
         <div className="c-avatar">
           <CImg
@@ -29,7 +31,7 @@ const TheHeaderDropdown = () => {
       <CDropdownMenu className="pt-0" placement="bottom-end">
         <CDropdownItem onClick={handleLogout}>
           <CIcon name="cil-lock-locked" className="mfe-2" />
-            Wyloguj
+          Wyloguj
         </CDropdownItem>
       </CDropdownMenu>
     </CDropdown>

@@ -11,10 +11,10 @@ import {
   CInputGroup,
   CInputGroupPrepend,
   CInputGroupText,
-  CRow
+  CRow,
 } from '@coreui/react';
 import CIcon from '@coreui/icons-react';
-import {setUser} from '../../../features';
+import { setUser } from '../../../features';
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -30,7 +30,11 @@ const Login = () => {
             <CCard>
               <CCardBody>
                 <CForm>
-                  <img className='mb-3' src='/esport_first_black_login.svg' alt='Esport first logo' />
+                  <img
+                    className="mb-3"
+                    src="/esport_first_black_login.svg"
+                    alt="Esport first logo"
+                  />
                   <p className="text-muted">Zaloguj się do swojego konta</p>
                   <CInputGroup className="mb-3">
                     <CInputGroupPrepend>
@@ -38,7 +42,11 @@ const Login = () => {
                         <CIcon name="cil-user" />
                       </CInputGroupText>
                     </CInputGroupPrepend>
-                    <CInput type="text" placeholder="Email" autoComplete="username" />
+                    <CInput
+                      type="text"
+                      placeholder="Email"
+                      autoComplete="username"
+                    />
                   </CInputGroup>
                   <CInputGroup className="mb-4">
                     <CInputGroupPrepend>
@@ -46,11 +54,21 @@ const Login = () => {
                         <CIcon name="cil-lock-locked" />
                       </CInputGroupText>
                     </CInputGroupPrepend>
-                    <CInput type="password" placeholder="Hasło" autoComplete="current-password" />
+                    <CInput
+                      type="password"
+                      placeholder="Hasło"
+                      autoComplete="current-password"
+                    />
                   </CInputGroup>
                   <CRow>
                     <CCol xs="6">
-                      <CButton onClick={handleLogin} color="primary" className="px-4">Login</CButton>
+                      <CButton
+                        onClick={handleLogin}
+                        color="primary"
+                        className="px-4"
+                      >
+                        Login
+                      </CButton>
                     </CCol>
                   </CRow>
                 </CForm>

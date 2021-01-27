@@ -1,5 +1,5 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
-import { persistReducer, persistStore} from 'redux-persist';
+import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import thunk from 'redux-thunk';
 
@@ -16,14 +16,14 @@ const rootReducer = combineReducers({
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['persisted']
+  whitelist: ['persisted'],
 };
 
 export const store = configureStore({
   reducer: persistReducer(persistConfig, rootReducer),
   devTools: process.env.NODE_ENV !== 'production',
   preloadedState: initialState,
-  middleware: [thunk]
+  middleware: [thunk],
 });
 
 export const persistor = persistStore(store);

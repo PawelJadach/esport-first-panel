@@ -5,7 +5,9 @@ const TheFooter = () => {
   return (
     <CFooter fixed={false}>
       <div>
-        <span className="ml-1">&copy; 2020 Esport First. All rights reserved.</span>
+        <span className="ml-1">
+          &copy; 2020 Esport First. All rights reserved.
+        </span>
       </div>
     </CFooter>
   );

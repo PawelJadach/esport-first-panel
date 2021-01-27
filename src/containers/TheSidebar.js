@@ -18,15 +18,15 @@ import navigation from './_nav';
 
 const TheSidebar = () => {
   const dispatch = useDispatch();
-  const show = useSelector(state => state.auth.sidebarShow);
+  const show = useSelector((state) => state.auth.sidebarShow);
 
   return (
     <CSidebar
       show={show}
-      onShowChange={(val) => dispatch(setSidebarShow({sidebarShow: val }))}
+      onShowChange={(val) => dispatch(setSidebarShow({ sidebarShow: val }))}
     >
       <CSidebarBrand className="d-md-flex d-none" to="/">
-        <img src='/esport_first.svg' alt='Esport first logo' />
+        <img src="/esport_first.svg" alt="Esport first logo" />
       </CSidebarBrand>
       <CSidebarNav>
         <CCreateElement
@@ -35,11 +35,11 @@ const TheSidebar = () => {
             CSidebarNavDivider,
             CSidebarNavDropdown,
             CSidebarNavItem,
-            CSidebarNavTitle
+            CSidebarNavTitle,
           }}
         />
       </CSidebarNav>
-      <CSidebarMinimizer className="c-d-md-down-none"/>
+      <CSidebarMinimizer className="c-d-md-down-none" />
     </CSidebar>
   );
 };

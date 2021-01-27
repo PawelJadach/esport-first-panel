@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  CCard,
-  CCardBody,
-  CCol,
-  CRow,
-} from '@coreui/react';
+import { CCard, CCardBody, CCol, CRow } from '@coreui/react';
 
 const Dashboard = () => {
   return (
@@ -13,7 +8,9 @@ const Dashboard = () => {
         <CCardBody>
           <CRow>
             <CCol sm="5">
-              <h4 id="traffic" className="card-title mb-0">Działa</h4>
+              <h4 id="traffic" className="card-title mb-0">
+                Działa
+              </h4>
               <div className="small text-muted">Dzięki działa</div>
             </CCol>
           </CRow>

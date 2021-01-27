@@ -18,8 +18,8 @@ const auth = createSlice({
       const { sidebarShow } = action.payload;
 
       state.sidebarShow = sidebarShow;
-    }
-  }
+    },
+  },
 });
 
 export const { setUser, setSidebarShow } = auth.actions;
