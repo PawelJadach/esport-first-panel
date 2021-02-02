@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setSidebarShow } from '../features';
+import { setSidebarShow } from '../features/auth';
 import {
   CCreateElement,
   CSidebar,
@@ -8,7 +8,6 @@ import {
   CSidebarNav,
   CSidebarNavDivider,
   CSidebarNavTitle,
-  CSidebarMinimizer,
   CSidebarNavDropdown,
   CSidebarNavItem,
 } from '@coreui/react';
@@ -39,7 +38,6 @@ const TheSidebar = () => {
           }}
         />
       </CSidebarNav>
-      <CSidebarMinimizer className="c-d-md-down-none" />
     </CSidebar>
   );
 };

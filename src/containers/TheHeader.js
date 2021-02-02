@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setSidebarShow } from '../features';
+import { setSidebarShow } from '../features/auth';
 import { CHeader, CToggler, CHeaderBrand, CHeaderNav } from '@coreui/react';
 
 // routes config

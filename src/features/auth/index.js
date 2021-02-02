@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 export const initialState = {
   user: null,
   sidebarShow: false,
+  afterVerification: false,
 };
 
 const auth = createSlice({
@@ -19,9 +20,14 @@ const auth = createSlice({
 
       state.sidebarShow = sidebarShow;
     },
+    setAfterVerification(state, action) {
+      const { afterVerification } = action.payload;
+
+      state.afterVerification = afterVerification;
+    },
   },
 });
 
-export const { setUser, setSidebarShow } = auth.actions;
+export const { setUser, setSidebarShow, setAfterVerification } = auth.actions;
 
 export default auth.reducer;

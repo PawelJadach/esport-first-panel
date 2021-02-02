@@ -3,7 +3,7 @@ import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import thunk from 'redux-thunk';
 
-import authReducer, { initialState as authInitialState } from './features';
+import authReducer, { initialState as authInitialState } from './features/auth';
 
 const initialState = {
   auth: authInitialState,

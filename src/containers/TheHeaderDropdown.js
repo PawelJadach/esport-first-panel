@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   CDropdown,
   CDropdownItem,
@@ -7,18 +8,12 @@ import {
   CImg,
 } from '@coreui/react';
 import CIcon from '@coreui/icons-react';
-import { useDispatch } from 'react-redux';
-import axios from 'axios';
+import { logout } from '../redux/methods/auth';
+import { connect } from 'react-redux';
 
-const TheHeaderDropdown = () => {
-  const handleLogout = async () => {
-    await axios.get('http://localhost:3000/auth/logout', {
-      withCredentials: true,
-    });
-  };
-
+const TheHeaderDropdown = ({ logout }) => {
   return (
-    <CDropdown inNav className="c-header-nav-items mx-2" direction="down">
+    <CDropdown inNav className="c-header-nav-items" direction="down">
       <CDropdownToggle className="c-header-nav-link" caret={false}>
         <div className="c-avatar">
           <CImg
@@ -28,9 +23,9 @@ const TheHeaderDropdown = () => {
           />
         </div>
       </CDropdownToggle>
-      <CDropdownMenu className="pt-0" placement="bottom-end">
-        <CDropdownItem onClick={handleLogout}>
-          <CIcon name="cil-lock-locked" className="mfe-2" />
+      <CDropdownMenu placement="bottom-end">
+        <CDropdownItem onClick={logout}>
+          <CIcon name="cil-lock-locked" />
           Wyloguj
         </CDropdownItem>
       </CDropdownMenu>
@@ -38,4 +33,12 @@ const TheHeaderDropdown = () => {
   );
 };
 
-export default TheHeaderDropdown;
+TheHeaderDropdown.propTypes = {
+  logout: PropTypes.func,
+};
+
+const mapDispatch = {
+  logout,
+};
+
+export default connect(null, mapDispatch)(TheHeaderDropdown);

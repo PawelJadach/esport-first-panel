@@ -1,8 +1,8 @@
 import React from 'react';
-import { HashRouter, Redirect, Route, Switch } from 'react-router-dom';
-import { useCookies } from 'react-cookie';
+import { HashRouter } from 'react-router-dom';
 
 import './scss/style.scss';
+import RootRouter from './routers/RootRouter';
 
 const Loading = (
   <div className="pt-3 text-center">
@@ -10,51 +10,11 @@ const Loading = (
   </div>
 );
 
-// Containers
-const TheLayout = React.lazy(() => import('./containers/TheLayout'));
-
-// Pages
-const Login = React.lazy(() => import('./views/pages/login/Login'));
-const Page404 = React.lazy(() => import('./views/pages/page404/Page404'));
-const Page500 = React.lazy(() => import('./views/pages/page500/Page500'));
-
-const App = (props) => {
-  const [cookies] = useCookies(['jwt']);
-  console.log(cookies.jwt);
+const App = () => {
   return (
     <HashRouter>
       <React.Suspense fallback={Loading}>
-        {cookies.jwt ? (
-          <Switch>
-            <Route
-              exact
-              path="/404"
-              name="Page 404"
-              render={(props) => <Page404 {...props} />}
-            />
-            <Route
-              exact
-              path="/500"
-              name="Page 500"
-              render={(props) => <Page500 {...props} />}
-            />
-            <Route
-              path="/"
-              name="Home"
-              render={(props) => <TheLayout {...props} />}
-            />
-          </Switch>
-        ) : (
-          <Switch>
-            <Route
-              exact
-              path="/login"
-              name="Login Page"
-              render={(props) => <Login {...props} />}
-            />
-            <Redirect to={'/login'} />
-          </Switch>
-        )}
+        <RootRouter />
       </React.Suspense>
     </HashRouter>
   );

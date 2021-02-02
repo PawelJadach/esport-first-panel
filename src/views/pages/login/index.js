@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { connect } from 'react-redux';
+import { login } from '../../../redux/methods/auth';
 import {
   CButton,
   CCard,
@@ -16,29 +17,23 @@ import {
   CFormText,
 } from '@coreui/react';
 import CIcon from '@coreui/icons-react';
-import { setUser } from '../../../features';
 import clsx from 'clsx';
 
-import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
-const Login = () => {
+const Login = ({ login }) => {
   const history = useHistory();
-  const dispatch = useDispatch();
   const { register, handleSubmit, errors, setError, clearErrors } = useForm();
   const onSubmit = async (data) => {
-    const res = await axios.post('http://localhost:3000/auth/login', data, {
-      withCredentials: true,
-    });
+    const res = await login(data);
 
-    if (res.data && res.data.error) {
+    if (res.success) {
+      history.push('/');
+    } else {
       setError('form', {
         type: 'manual',
-        message: res.data.error,
+        message: res.error,
       });
-    } else {
-      dispatch(setUser({ user: data.email }));
-      history.push('/');
     }
   };
 
@@ -118,4 +113,8 @@ const Login = () => {
   );
 };
 
-export default Login;
+const mapDispatch = {
+  login,
+};
+
+export default connect(null, mapDispatch)(Login);
