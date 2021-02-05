@@ -1,7 +1,7 @@
 import React from 'react';
 import { CCard, CCardBody, CCol, CRow } from '@coreui/react';
 
-const Dashboard = () => {
+const Teams = () => {
   return (
     <>
       <CCard>
@@ -9,9 +9,9 @@ const Dashboard = () => {
           <CRow>
             <CCol sm="5">
               <h4 id="traffic" className="card-title mb-0">
-                Dashboard
+                Drużyny
               </h4>
-              <div className="small text-muted">Strona główna</div>
+              <div className="small text-muted">Strona z drużynami</div>
             </CCol>
           </CRow>
         </CCardBody>
@@ -20,4 +20,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default Teams;

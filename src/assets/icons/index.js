@@ -120,12 +120,26 @@ import {
   cilX,
   cilXCircle,
   cilWarning,
+  cilGroup,
+  cilBuilding,
+  cilGamepad,
+  cilCarAlt,
+  cibGumroad,
+  cilLan,
+  cilNewspaper,
 } from '@coreui/icons';
 
 export const icons = Object.assign(
   {},
   {},
   {
+    cilNewspaper,
+    cilLan,
+    cibGumroad,
+    cilCarAlt,
+    cilGamepad,
+    cilBuilding,
+    cilGroup,
     cilAlignCenter,
     cilAlignLeft,
     cilAlignRight,

@@ -4,13 +4,18 @@ import storage from 'redux-persist/lib/storage';
 import thunk from 'redux-thunk';
 
 import authReducer, { initialState as authInitialState } from './features/auth';
+import userReducer, {
+  initialState as userInitialState,
+} from './features/users';
 
 const initialState = {
   auth: authInitialState,
+  users: userInitialState,
 };
 
 const rootReducer = combineReducers({
   auth: authReducer,
+  users: userReducer,
 });
 
 const persistConfig = {

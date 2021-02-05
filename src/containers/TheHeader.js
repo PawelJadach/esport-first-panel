@@ -4,7 +4,7 @@ import { setSidebarShow } from '../features/auth';
 import { CHeader, CToggler, CHeaderBrand, CHeaderNav } from '@coreui/react';
 
 // routes config
-import routes from '../routes';
+import routes from '../routers/routes';
 
 import { TheHeaderDropdown } from './index';
 
