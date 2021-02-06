@@ -1,21 +1,67 @@
-import React from 'react';
-import { CCard, CCardBody, CCol, CRow } from '@coreui/react';
+import React, { useState } from 'react';
+import {
+  CButton,
+  CButtonToolbar,
+  CCard,
+  CCardBody,
+  CCol,
+  CRow,
+} from '@coreui/react';
+import PersonsTableFeat from '../../features/persons/PersonsTableFeat';
+import AddNewPersonModal from '../../features/persons/AddNewPersonModal';
+import EditPersonModal from '../../features/persons/EditPersonModal';
 
 const Users = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [editPerson, setEditPerson] = useState(null);
+
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
+  const toggle = () => {
+    setIsOpen((prev) => !prev);
+  };
+
+  const toggleEditModal = () => {
+    setEditPerson(null);
+  };
+
   return (
     <>
       <CCard>
         <CCardBody>
           <CRow>
-            <CCol sm="5">
-              <h4 id="traffic" className="card-title mb-0">
-                Osoby
-              </h4>
-              <div className="small text-muted">Strona z osobami</div>
+            <CCol sm="12">
+              <PersonsTableFeat
+                updatePersonById={(person) => setEditPerson(person)}
+              />
+              <CButtonToolbar justify="end">
+                <CButton
+                  onClick={openModal}
+                  color="success"
+                  className="ml-auto"
+                >
+                  ADD NEW PERSON
+                </CButton>
+              </CButtonToolbar>
             </CCol>
           </CRow>
         </CCardBody>
       </CCard>
+      <AddNewPersonModal
+        isOpen={isOpen}
+        close={() => setIsOpen(false)}
+        toggle={toggle}
+      />
+      {editPerson && (
+        <EditPersonModal
+          isOpen={!!editPerson}
+          close={() => setEditPerson(false)}
+          toggle={toggleEditModal}
+          initialValues={editPerson}
+        />
+      )}
     </>
   );
 };

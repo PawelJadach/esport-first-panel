@@ -5,10 +5,6 @@ import {
   CCard,
   CCardBody,
   CCol,
-  CModal,
-  CModalBody,
-  CModalFooter,
-  CModalHeader,
   CRow,
 } from '@coreui/react';
 import UserTableFeat from '../../features/users/UserTable';

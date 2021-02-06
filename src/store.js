@@ -7,15 +7,20 @@ import authReducer, { initialState as authInitialState } from './features/auth';
 import userReducer, {
   initialState as userInitialState,
 } from './features/users';
+import personReducer, {
+  initialState as personInitialState,
+} from './features/persons';
 
 const initialState = {
   auth: authInitialState,
   users: userInitialState,
+  persons: personInitialState,
 };
 
 const rootReducer = combineReducers({
   auth: authReducer,
   users: userReducer,
+  persons: personReducer,
 });
 
 const persistConfig = {
