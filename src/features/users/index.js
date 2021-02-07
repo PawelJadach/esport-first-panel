@@ -36,6 +36,13 @@ const auth = createSlice({
 
       state.isFetched = isFetched;
     },
+    changeUser(state, action) {
+      const { user } = action.payload;
+
+      state.users = state.users.map((item) => {
+        return item.id === user.id ? user : item;
+      });
+    },
   },
 });
 
@@ -45,6 +52,7 @@ export const {
   removeUser,
   changeUserRole,
   setIsFetched,
+  changeUser,
 } = auth.actions;
 
 export default auth.reducer;

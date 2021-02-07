@@ -3,14 +3,11 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
 
-import { addModerator } from '../../../redux/methods/users';
+import { updateUser } from '../../../redux/methods/users';
 
 import {
   CButton,
   CForm,
-  CFormText,
-  CInput,
-  CLabel,
   CModal,
   CModalBody,
   CModalFooter,
@@ -28,7 +25,7 @@ import { compose } from 'redux';
 import { withUsers } from '../../../hoc/withUsers';
 
 const propTypes = {
-  addModerator: PropTypes.func,
+  updateUser: PropTypes.func,
   isOpen: PropTypes.bool,
   toggle: PropTypes.func,
   close: PropTypes.func,
@@ -36,17 +33,21 @@ const propTypes = {
   users: WithUsersHocPropTypes,
 };
 
-const AddNewUserModal = ({
+const EditUserModal = ({
   isOpen,
   toggle,
   close,
-  addModerator,
+  updateUser,
   persons,
   users,
+  defaultValues,
 }) => {
-  const form = useForm();
+  const form = useForm({ defaultValues: defaultValues });
   const onSubmit = async (data) => {
-    const res = await addModerator(data);
+    const res = await updateUser(defaultValues.id, {
+      email: data.email,
+      personId: data.personId,
+    });
 
     if (res.error) {
       form.setError('form', {
@@ -69,13 +70,17 @@ const AddNewUserModal = ({
     usePersonsIds &&
     persons &&
     persons.list &&
-    persons.list.filter((person) => !usePersonsIds.includes(person.id));
+    persons.list.filter(
+      (person) =>
+        !usePersonsIds.includes(person.id) ||
+        person.id === defaultValues.personId
+    );
 
   return (
     <CModal color="success" show={isOpen} onClose={toggle}>
       {form.isSubmitting && <Spinner full />}
       <CForm autoComplete="off" onSubmit={form.handleSubmit(onSubmit)}>
-        <CModalHeader closeButton>ADDING NEW USER</CModalHeader>
+        <CModalHeader closeButton>EDITING USER</CModalHeader>
         <CModalBody>
           <Input
             form={form}
@@ -83,14 +88,6 @@ const AddNewUserModal = ({
             name="email"
             label="Email"
             placeholder="Email"
-            required
-          />
-          <Input
-            form={form}
-            type="password"
-            name="pwd"
-            label="Password"
-            placeholder="Password"
             required
           />
           {persons.isFetched && users.isFetched && (
@@ -105,6 +102,7 @@ const AddNewUserModal = ({
                   label: `${person.name} ${person.surname}`,
                 })),
               ]}
+              defaultValue={defaultValues.personId}
             />
           )}
           {form.errors.form && (
@@ -115,7 +113,7 @@ const AddNewUserModal = ({
         </CModalBody>
         <CModalFooter>
           <CButton disabled={form.isSubmitting} type="submit" color="success">
-            Add new user
+            Edit user
           </CButton>
           <CButton
             disabled={form.isSubmitting}
@@ -131,11 +129,11 @@ const AddNewUserModal = ({
 };
 
 const mapDispatch = {
-  addModerator,
+  updateUser,
 };
 
-AddNewUserModal.propTypes = propTypes;
+EditUserModal.propTypes = propTypes;
 
 const enhance = compose(connect(null, mapDispatch), withPersons, withUsers);
 
-export default enhance(AddNewUserModal);
+export default enhance(EditUserModal);

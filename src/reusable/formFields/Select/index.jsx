@@ -17,10 +17,11 @@ const propTypes = {
         PropTypes.string,
         PropTypes.number,
         PropTypes.bool,
-      ]).isRequired,
+      ]),
       label: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     })
   ),
+  noOptions: PropTypes.string,
 };
 
 const Select = ({
@@ -30,6 +31,8 @@ const Select = ({
   form,
   valueAsNumber = false,
   options = [],
+  noOptions = 'Select...',
+  defaultValue = '',
 }) => {
   const inputSettings = {
     valueAsNumber: valueAsNumber,
@@ -46,10 +49,15 @@ const Select = ({
         className="custom-select"
         name={name}
         ref={form.register(inputSettings)}
+        value={form.getValues(name)}
+        defaultValue={defaultValue}
       >
+        <option hidden value="">
+          {noOptions}
+        </option>
         {options.map((opt) => (
           <option key={opt.value} value={opt.value}>
-            {opt.label || opt.value}
+            {opt.label}
           </option>
         ))}
       </select>

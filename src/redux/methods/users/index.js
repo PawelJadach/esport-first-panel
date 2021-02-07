@@ -5,6 +5,7 @@ import {
   changeUserRole,
   setIsFetched,
   setUsers,
+  changeUser,
 } from '../../../features/users';
 import { handleErrors } from '../errors';
 
@@ -23,11 +24,11 @@ export const getAll = () => async (dispatch) => {
   }
 };
 
-export const addModerator = ({ email, pwd }) => async (dispatch) => {
+export const addModerator = (newUser) => async (dispatch) => {
   try {
     const res = await axios.post(
       `${process.env.REACT_APP_BE_URL}/user/register`,
-      { email, pwd },
+      newUser,
       {
         withCredentials: true,
       }
@@ -80,6 +81,27 @@ export const changeRole = (id, newRoleId) => async (dispatch) => {
       return { error: res.data.error, success: false };
     } else {
       dispatch(changeUserRole({ id, newRoleId }));
+      return { success: true };
+    }
+  } catch (error) {
+    handleErrors(error);
+  }
+};
+
+export const updateUser = (id, newUser) => async (dispatch) => {
+  try {
+    const res = await axios.put(
+      `${process.env.REACT_APP_BE_URL}/user/${id}`,
+      newUser,
+      {
+        withCredentials: true,
+      }
+    );
+
+    if (res.data && res.data.error) {
+      return { error: res.data.error, success: false };
+    } else {
+      dispatch(changeUser({ user: res.data }));
       return { success: true };
     }
   } catch (error) {

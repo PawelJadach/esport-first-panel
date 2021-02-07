@@ -6,6 +6,7 @@ import {
   updatePerson,
   setIsFetched,
 } from '../../../features/persons';
+import { changeUser } from '../../../features/users';
 import { handleErrors } from '../errors';
 
 export const getAll = () => async (dispatch) => {
@@ -57,6 +58,9 @@ export const removePersonById = (id) => async (dispatch) => {
       return { error: res.data.error, success: false };
     } else {
       dispatch(removePerson({ id: id }));
+      if (res.data.user) {
+        dispatch(changeUser({ user: res.data.user }));
+      }
       return { success: true };
     }
   } catch (error) {

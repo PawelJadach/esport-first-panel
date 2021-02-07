@@ -1,18 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { CBadge, CButton, CButtonGroup, CDataTable } from '@coreui/react';
-import CIcon from '@coreui/icons-react';
 
 import { User } from '../../propTypes/user';
 
 const propTypes = {
   users: PropTypes.arrayOf(User),
+  setUserToEdit: PropTypes.func,
+  changeRole: PropTypes.func,
+  remove: PropTypes.func,
 };
 
-const UserTable = ({ users, remove, changeRole }) => {
+const UserTable = ({ users, remove, changeRole, setUserToEdit }) => {
   const fields = [
-    { key: 'email', _style: { width: '50%' } },
-    { key: 'role', _style: { width: '50%' } },
+    { key: 'email', _style: { width: '20%' } },
+    { key: 'role', _style: { width: '20%' } },
+    { key: 'name', _style: { width: '20%' } },
     {
       key: 'actions',
       label: '',
@@ -32,12 +35,16 @@ const UserTable = ({ users, remove, changeRole }) => {
     1: 'Moderator',
   };
 
-  const handleChangeRole = (item) => () => {
-    changeRole(item.id, item.role === 1 ? 0 : 1);
+  const handleChangeRole = (user) => () => {
+    changeRole(user.id, user.role === 1 ? 0 : 1);
   };
 
-  const handleRemove = (item) => () => {
-    remove(item.id);
+  const handleRemove = (user) => () => {
+    remove(user.id);
+  };
+
+  const handleSetUserToEdit = (user) => () => {
+    setUserToEdit(user);
   };
 
   return (
@@ -56,19 +63,32 @@ const UserTable = ({ users, remove, changeRole }) => {
             </CBadge>
           </td>
         ),
-        actions: (item) => {
+        name: (user) => (
+          <td>
+            <CBadge color="primary">
+              {user.person && `${user.person.name} ${user.person.surname}`}
+            </CBadge>
+          </td>
+        ),
+        actions: (user) => {
           return (
             <td>
               <CButtonGroup>
                 <CButton
-                  color="primary"
-                  variant="outline"
+                  color="success"
                   size="sm"
-                  onClick={handleChangeRole(item)}
+                  onClick={handleChangeRole(user)}
                 >
                   Role
                 </CButton>
-                <CButton color="danger" size="sm" onClick={handleRemove(item)}>
+                <CButton
+                  color="info"
+                  size="sm"
+                  onClick={handleSetUserToEdit(user)}
+                >
+                  Edit
+                </CButton>
+                <CButton color="danger" size="sm" onClick={handleRemove(user)}>
                   Remove
                 </CButton>
               </CButtonGroup>

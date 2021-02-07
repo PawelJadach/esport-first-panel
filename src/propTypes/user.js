@@ -4,6 +4,7 @@ export const User = PropTypes.shape({
   id: PropTypes.string,
   email: PropTypes.string,
   role: PropTypes.number,
+  person: Person,
 });
 
 export const Person = PropTypes.shape({
@@ -15,4 +16,16 @@ export const Person = PropTypes.shape({
   gender: PropTypes.number,
   photoUrl: PropTypes.string,
   role: PropTypes.string,
+});
+
+export const WithPersonsHocPropTypes = PropTypes.shape({
+  list: PropTypes.arrayOf(Person),
+  isFetched: PropTypes.bool,
+  isLoading: PropTypes.bool,
+});
+
+export const WithUsersHocPropTypes = PropTypes.shape({
+  list: PropTypes.arrayOf(User),
+  isFetched: PropTypes.bool,
+  isLoading: PropTypes.bool,
 });
