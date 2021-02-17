@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch, connect } from 'react-redux';
 import { setSidebarShow } from '../features/auth';
 import {
   CCreateElement,
@@ -18,6 +18,15 @@ import navigation from './_nav';
 const TheSidebar = () => {
   const dispatch = useDispatch();
   const show = useSelector((state) => state.auth.sidebarShow);
+  const role = useSelector((state) => state.auth.user.role);
+
+  const filteredNavs = navigation.filter((item) => {
+    if (item.roles) {
+      return item.roles.includes(role);
+    } else {
+      return true;
+    }
+  });
 
   return (
     <CSidebar
@@ -29,7 +38,7 @@ const TheSidebar = () => {
       </CSidebarBrand>
       <CSidebarNav>
         <CCreateElement
-          items={navigation}
+          items={filteredNavs}
           components={{
             CSidebarNavDivider,
             CSidebarNavDropdown,

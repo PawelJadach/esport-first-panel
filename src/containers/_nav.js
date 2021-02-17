@@ -13,6 +13,7 @@ const _nav = [
     name: 'Users',
     to: '/users',
     icon: <CIcon name="cil-user-follow" customClasses="c-sidebar-nav-icon" />,
+    roles: [0],
   },
   {
     _tag: 'CSidebarNavItem',

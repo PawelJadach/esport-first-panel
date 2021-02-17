@@ -14,7 +14,7 @@ const News = React.lazy(() => import('../views/news'));
 const routes = [
   { path: '/', exact: true, name: 'Home' },
   { path: '/dashboard', name: 'Dashboard', component: Dashboard },
-  { path: '/users', name: 'Users', component: Users },
+  { path: '/users', name: 'Users', component: Users, roles: [0] },
   { path: '/persons', name: 'Persons', component: Persons },
   { path: '/teams', name: 'Teams', component: Teams },
   { path: '/organizations', name: 'Organizations', component: Organizations },
