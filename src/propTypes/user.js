@@ -29,3 +29,9 @@ export const WithUsersHocPropTypes = PropTypes.shape({
   isFetched: PropTypes.bool,
   isLoading: PropTypes.bool,
 });
+
+export const Newsletter = PropTypes.shape({
+  id: PropTypes.string,
+  email: PropTypes.string,
+  isActive: PropTypes.bool,
+});

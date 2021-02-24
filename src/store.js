@@ -10,17 +10,22 @@ import userReducer, {
 import personReducer, {
   initialState as personInitialState,
 } from './features/persons';
+import newsletterReducer, {
+  initialState as newsletterInitialState,
+} from './features/newsletter';
 
 const initialState = {
   auth: authInitialState,
   users: userInitialState,
   persons: personInitialState,
+  newsletter: newsletterInitialState,
 };
 
 const rootReducer = combineReducers({
   auth: authReducer,
   users: userReducer,
   persons: personReducer,
+  newsletter: newsletterReducer,
 });
 
 const persistConfig = {
