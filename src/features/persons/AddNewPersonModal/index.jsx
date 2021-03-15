@@ -7,25 +7,14 @@ import { addNewPerson } from '../../../redux/methods/persons';
 
 import {
   CButton,
-  CDropdown,
-  CDropdownItem,
-  CDropdownMenu,
-  CDropdownToggle,
   CForm,
-  CFormGroup,
-  CFormText,
-  CInput,
-  CInputRadio,
-  CLabel,
   CModal,
   CModalBody,
   CModalFooter,
   CModalHeader,
 } from '@coreui/react';
 import Spinner from '../../../reusable/Spinner';
-import Input from '../../../reusable/formFields/Input';
-import Select from '../../../reusable/formFields/Select';
-import PersonsForm from '../../../components/PersonsForm';
+import PersonsForm from '../../../components/forms/PersonsForm';
 
 const propTypes = {
   addNewPerson: PropTypes.func,
@@ -41,7 +30,7 @@ const AddNewUserModal = ({ isOpen, toggle, close, addNewPerson }) => {
     const res = await addNewPerson(data);
 
     if (res.error) {
-      setError('form', {
+      form.setError('form', {
         type: 'manual',
         message: res.error,
       });

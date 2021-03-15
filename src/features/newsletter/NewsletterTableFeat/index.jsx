@@ -8,7 +8,7 @@ import {
 } from '../../../redux/methods/newsletter';
 
 import Spinner from '../../../reusable/Spinner';
-import NewsletterTable from '../../../components/NewsletterTable';
+import NewsletterTable from '../../../components/tables/NewsletterTable';
 
 import { Newsletter } from '../../../propTypes/user';
 

@@ -23,7 +23,7 @@ const routes = [
   // { path: '/games', name: 'Games', component: Games },
   // { path: '/races', name: 'Races', component: Races },
   // { path: '/tracks', name: 'Tracks', component: Tracks },
-  // { path: '/leagues', name: 'Leagues', component: Leagues },
+  { path: '/leagues', name: 'Leagues', component: Leagues },
   // { path: '/news', name: 'News', component: News },
 ];
 

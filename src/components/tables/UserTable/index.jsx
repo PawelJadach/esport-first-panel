@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { CBadge, CButton, CButtonGroup, CDataTable } from '@coreui/react';
 
-import { User } from '../../propTypes/user';
+import { User } from '../../../propTypes/user';
 
 const propTypes = {
   users: PropTypes.arrayOf(User),

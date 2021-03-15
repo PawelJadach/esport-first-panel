@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Input from '../../reusable/formFields/Input';
-import Select from '../../reusable/formFields/Select';
+import Input from '../../../reusable/formFields/Input';
+import Select from '../../../reusable/formFields/Select';
 
 const propTypes = {
   form: PropTypes.object.isRequired,

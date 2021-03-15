@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import { removeUserById, changeRole } from '../../../redux/methods/users';
 
-import UserTable from '../../../components/UserTable';
+import UserTable from '../../../components/tables/UserTable';
 import Spinner from '../../../reusable/Spinner';
 
 import { WithUsersHocPropTypes } from '../../../propTypes/user';

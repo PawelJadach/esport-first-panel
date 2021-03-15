@@ -58,12 +58,12 @@ const _nav = [
   //   to: '/tracks',
   //   icon: <CIcon name="cibGumroad" customClasses="c-sidebar-nav-icon" />,
   // },
-  // {
-  //   _tag: 'CSidebarNavItem',
-  //   name: 'Leagues',
-  //   to: '/leagues',
-  //   icon: <CIcon name="cilLan" customClasses="c-sidebar-nav-icon" />,
-  // },
+  {
+    _tag: 'CSidebarNavItem',
+    name: 'Leagues',
+    to: '/leagues',
+    icon: <CIcon name="cilLan" customClasses="c-sidebar-nav-icon" />,
+  },
   // {
   //   _tag: 'CSidebarNavItem',
   //   name: 'News',

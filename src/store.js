@@ -13,12 +13,16 @@ import personReducer, {
 import newsletterReducer, {
   initialState as newsletterInitialState,
 } from './features/newsletter';
+import leaguesReducer, {
+  initialState as leaguesInitialState,
+} from './features/leagues';
 
 const initialState = {
   auth: authInitialState,
   users: userInitialState,
   persons: personInitialState,
   newsletter: newsletterInitialState,
+  leagues: leaguesInitialState,
 };
 
 const rootReducer = combineReducers({
@@ -26,6 +30,7 @@ const rootReducer = combineReducers({
   users: userReducer,
   persons: personReducer,
   newsletter: newsletterReducer,
+  leagues: leaguesReducer,
 });
 
 const persistConfig = {

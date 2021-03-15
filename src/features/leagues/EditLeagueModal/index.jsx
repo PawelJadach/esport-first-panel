@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
 
-import { updatePersonById } from '../../../redux/methods/persons';
+import { editLeague } from '../../../redux/methods/leagues';
 
 import {
   CButton,
@@ -14,26 +14,29 @@ import {
   CModalHeader,
 } from '@coreui/react';
 import Spinner from '../../../reusable/Spinner';
-import PersonsForm from '../../../components/forms/PersonsForm';
+import LeaguesForm from '../../../components/forms/LeaguesForm';
 
 const propTypes = {
-  updatePersonById: PropTypes.func,
+  addNewLeague: PropTypes.func,
   isOpen: PropTypes.bool,
   toggle: PropTypes.func,
   close: PropTypes.func,
+  editSuccess: PropTypes.func,
 };
 
-const EditPersonModal = ({
+const EditLeagueModal = ({
   isOpen,
   toggle,
   close,
-  updatePersonById,
+  editLeague,
   initialValues,
+  editSuccess,
 }) => {
   const form = useForm({ defaultValues: initialValues });
 
-  const onSubmit = async (data) => {
-    const res = await updatePersonById(initialValues.id, data);
+  const onSubmit = async (_, e) => {
+    const formData = new FormData(e.target);
+    const res = await editLeague(formData, initialValues.id);
 
     if (res.error) {
       form.setError('form', {
@@ -44,6 +47,7 @@ const EditPersonModal = ({
       close();
     }
     form.reset();
+    editSuccess();
     return true;
   };
 
@@ -51,13 +55,13 @@ const EditPersonModal = ({
     <CModal color="success" show={isOpen} onClose={toggle}>
       {form.isSubmitting && <Spinner full />}
       <CForm autoComplete="off" onSubmit={form.handleSubmit(onSubmit)}>
-        <CModalHeader closeButton>EDITING PERSON</CModalHeader>
+        <CModalHeader closeButton>EDIT LEAGUE</CModalHeader>
         <CModalBody>
-          <PersonsForm form={form} />
+          <LeaguesForm form={form} />
         </CModalBody>
         <CModalFooter>
           <CButton disabled={form.isSubmitting} type="submit" color="success">
-            Edit person
+            Edit League
           </CButton>
           <CButton
             disabled={form.isSubmitting}
@@ -73,9 +77,9 @@ const EditPersonModal = ({
 };
 
 const mapDispatch = {
-  updatePersonById,
+  editLeague,
 };
 
-EditPersonModal.propTypes = propTypes;
+EditLeagueModal.propTypes = propTypes;
 
-export default connect(null, mapDispatch)(EditPersonModal);
+export default connect(null, mapDispatch)(EditLeagueModal);

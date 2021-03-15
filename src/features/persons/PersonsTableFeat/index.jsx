@@ -8,7 +8,7 @@ import {
   updatePersonById,
 } from '../../../redux/methods/persons';
 
-import PersonsTable from '../../../components/PersonsTable';
+import PersonsTable from '../../../components/tables/PersonsTable';
 import Spinner from '../../../reusable/Spinner';
 
 import { User } from '../../../propTypes/user';

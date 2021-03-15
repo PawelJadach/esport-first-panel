@@ -35,3 +35,9 @@ export const Newsletter = PropTypes.shape({
   email: PropTypes.string,
   isActive: PropTypes.bool,
 });
+
+export const League = PropTypes.shape({
+  id: PropTypes.string,
+  name: PropTypes.string,
+  linkToPage: PropTypes.string,
+});
